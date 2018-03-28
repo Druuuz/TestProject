@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<TestProject.Models.Shop>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Work Days</th>
+            <th scope="col">Products</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var shop in Model)
+            {
+        <tr class="string">
+            <th scope="row">@shop.Id.ToString()</th>
+            <td>@shop.Name</td>
+            <td>@shop.Address</td>
+            <td>@shop.Schedule.WorkDays</td>
+            <td>@shop.Schedule.Start_at.ToString():00 -  @shop.Schedule.Finish_at.ToString():00</td>
+            <td><a href='@Url.Action("GetProducts",  new { Id = shop.Id})' class="c-card__more">See Products</a></td>
+        </tr>
+            }
+        
+    </tbody>
+</table>
